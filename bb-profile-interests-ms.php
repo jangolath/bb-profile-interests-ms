@@ -146,19 +146,19 @@ class BAEI_Profile_Interests {
      */
     private function includes() {
         // Database handler
-        require_once BAEI_PLUGIN_DIR . 'includes/class-bb-interests-db.php';
+        require_once BAEI_PLUGIN_DIR . 'includes/class-baei-db.php';
         
         // Admin functions
-        require_once BAEI_PLUGIN_DIR . 'includes/admin/class-bb-interests-admin.php';
+        require_once BAEI_PLUGIN_DIR . 'includes/admin/class-baei-admin.php';
         
         // Frontend functions
-        require_once BAEI_PLUGIN_DIR . 'includes/class-bb-interests-frontend.php';
+        require_once BAEI_PLUGIN_DIR . 'includes/class-baei-frontend.php';
         
         // Profile component
-        require_once BAEI_PLUGIN_DIR . 'includes/class-bb-interests-profile-component.php';
+        require_once BAEI_PLUGIN_DIR . 'includes/class-baei-profile-component.php';
         
         // Search functions
-        require_once BAEI_PLUGIN_DIR . 'includes/class-bb-interests-search.php';
+        require_once BAEI_PLUGIN_DIR . 'includes/class-baei-search.php';
     }
 
     /**
@@ -209,7 +209,8 @@ class BAEI_Profile_Interests {
         wp_localize_script('bae-interests-js', 'baeInterests', array(
             'ajaxUrl' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('bae_interests_nonce'),
-            'confirmRemove' => __('Are you sure you want to remove this interest?', 'bae-interests')
+            'confirmRemove' => __('Are you sure you want to remove this interest?', 'bae-interests'),
+            'userId' => get_current_user_id()
         ));
         
         wp_enqueue_script('bae-interests-js');
@@ -309,7 +310,7 @@ class BAEI_Profile_Interests {
         );
         
         // Get DB instance
-        require_once BAEI_PLUGIN_DIR . 'includes/class-bb-interests-db.php';
+        require_once BAEI_PLUGIN_DIR . 'includes/class-baei-db.php';
         $db = BAEI_DB::get_instance();
         
         // Add each category if it doesn't exist
