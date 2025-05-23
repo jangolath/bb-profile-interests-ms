@@ -3,7 +3,7 @@
  * Plugin Name: BAE Profile Interests
  * Plugin URI: https://yoursite.com
  * Description: A BuddyBoss Advanced Enhancement plugin that allows members to add searchable interests to their profiles similar to FetLife.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Your Name
  * Author URI: https://yoursite.com
  * Text Domain: bae-interests
@@ -33,6 +33,9 @@ class BAEI_Profile_Interests {
         // Define constants
         $this->define_constants();
 
+        // Include required files early
+        $this->includes();
+
         // Initialize plugin
         add_action('plugins_loaded', array($this, 'init'));
 
@@ -40,7 +43,7 @@ class BAEI_Profile_Interests {
         register_activation_hook(__FILE__, array($this, 'activate'));
         register_deactivation_hook(__FILE__, array($this, 'deactivate'));
         
-        // Add admin menu to BAE
+        // Add admin menu to BAE (only if we're in admin and classes are loaded)
         add_action('network_admin_menu', array($this, 'add_network_admin_menu'));
     }
 
@@ -60,9 +63,29 @@ class BAEI_Profile_Interests {
      * Define constants for the plugin
      */
     private function define_constants() {
-        define('BAEI_VERSION', '1.0.0');
+        define('BAEI_VERSION', '1.0.1');
         define('BAEI_PLUGIN_DIR', plugin_dir_path(__FILE__));
         define('BAEI_PLUGIN_URL', plugin_dir_url(__FILE__));
+    }
+
+    /**
+     * Include required files
+     */
+    private function includes() {
+        // Database handler
+        require_once BAEI_PLUGIN_DIR . 'includes/class-baei-db.php';
+        
+        // Admin functions
+        require_once BAEI_PLUGIN_DIR . 'includes/admin/class-baei-admin.php';
+        
+        // Frontend functions
+        require_once BAEI_PLUGIN_DIR . 'includes/class-baei-frontend.php';
+        
+        // Profile component
+        require_once BAEI_PLUGIN_DIR . 'includes/class-baei-profile-component.php';
+        
+        // Search functions
+        require_once BAEI_PLUGIN_DIR . 'includes/class-baei-search.php';
     }
 
     /**
@@ -75,15 +98,13 @@ class BAEI_Profile_Interests {
         // Check if BuddyBoss is active
         if (!class_exists('BuddyPress')) {
             add_action('admin_notices', array($this, 'buddyboss_required_notice'));
+            add_action('network_admin_notices', array($this, 'buddyboss_required_notice'));
             return;
         }
 
         // Register assets
         add_action('wp_enqueue_scripts', array($this, 'register_assets'));
         add_action('admin_enqueue_scripts', array($this, 'register_admin_assets'));
-
-        // Include required files
-        $this->includes();
 
         // Initialize components
         $this->init_components();
@@ -131,6 +152,15 @@ class BAEI_Profile_Interests {
      * Render the admin page wrapper
      */
     public function render_admin_page() {
+        // Check if classes are loaded
+        if (!class_exists('BAEI_DB') || !class_exists('BAEI_Admin')) {
+            echo '<div class="wrap">';
+            echo '<h1>' . __('Profile Interests', 'bae-interests') . '</h1>';
+            echo '<div class="notice notice-error"><p>' . __('Plugin classes not loaded properly. Please check file permissions and plugin structure.', 'bae-interests') . '</p></div>';
+            echo '</div>';
+            return;
+        }
+
         // Get the DB instance
         $db = BAEI_DB::get_instance();
         
@@ -139,26 +169,6 @@ class BAEI_Profile_Interests {
         
         // Let the admin class render the appropriate page based on the current tab
         $admin->render_admin_page();
-    }
-
-    /**
-     * Include required files
-     */
-    private function includes() {
-        // Database handler
-        require_once BAEI_PLUGIN_DIR . 'includes/class-baei-db.php';
-        
-        // Admin functions
-        require_once BAEI_PLUGIN_DIR . 'includes/admin/class-baei-admin.php';
-        
-        // Frontend functions
-        require_once BAEI_PLUGIN_DIR . 'includes/class-baei-frontend.php';
-        
-        // Profile component
-        require_once BAEI_PLUGIN_DIR . 'includes/class-baei-profile-component.php';
-        
-        // Search functions
-        require_once BAEI_PLUGIN_DIR . 'includes/class-baei-search.php';
     }
 
     /**
@@ -310,12 +320,13 @@ class BAEI_Profile_Interests {
         );
         
         // Get DB instance
-        require_once BAEI_PLUGIN_DIR . 'includes/class-baei-db.php';
-        $db = BAEI_DB::get_instance();
-        
-        // Add each category if it doesn't exist
-        foreach ($default_categories as $slug => $name) {
-            $db->add_category($name, $slug);
+        if (class_exists('BAEI_DB')) {
+            $db = BAEI_DB::get_instance();
+            
+            // Add each category if it doesn't exist
+            foreach ($default_categories as $slug => $name) {
+                $db->add_category($name, $slug);
+            }
         }
     }
 
@@ -332,4 +343,6 @@ class BAEI_Profile_Interests {
 function bae_profile_interests_init() {
     return BAEI_Profile_Interests::get_instance();
 }
-add_action('plugins_loaded', 'bae_profile_interests_init');
+
+// Load the plugin immediately
+bae_profile_interests_init();
