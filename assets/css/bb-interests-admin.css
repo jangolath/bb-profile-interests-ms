@@ -1,0 +1,291 @@
+/* BAE Profile Interests - Admin Styles */
+
+/* Admin Page Layout */
+.bae-interests-admin {
+    margin: 20px 0;
+}
+
+.bae-admin-tabs {
+    margin-bottom: 20px;
+}
+
+.bae-admin-tabs .nav-tab {
+    margin-right: 6px;
+    color: #0073aa;
+    border-color: #0073aa;
+}
+
+.bae-admin-tabs .nav-tab:hover,
+.bae-admin-tabs .nav-tab:focus {
+    background-color: #f0f8ff;
+}
+
+.bae-admin-tabs .nav-tab-active {
+    background: #0073aa;
+    color: #fff;
+    border-color: #0073aa;
+}
+
+.bae-admin-content {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+/* Add Interest Form */
+.bae-admin-add-interest {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+.bae-admin-add-interest h2 {
+    margin-top: 0;
+    color: #1d2327;
+    font-size: 20px;
+}
+
+.bae-admin-add-interest .form-table th {
+    width: 200px;
+    padding: 15px 10px 15px 0;
+}
+
+.bae-admin-add-interest .form-table td {
+    padding: 15px 10px;
+}
+
+.bae-admin-add-interest .regular-text {
+    width: 25em;
+}
+
+.bae-admin-add-interest select {
+    min-width: 25em;
+}
+
+/* Interests List */
+.bae-admin-interests-list h2 {
+    color: #1d2327;
+    font-size: 20px;
+}
+
+.bae-admin-filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f6f7f7;
+    border-radius: 4px;
+}
+
+.bae-admin-filters select,
+.bae-admin-filters input[type="text"] {
+    padding: 6px 10px;
+    border: 1px solid #8c8f94;
+    border-radius: 3px;
+}
+
+.bae-admin-filters input[type="text"] {
+    width: 250px;
+}
+
+/* Admin Tables */
+.bae-interests-table,
+.bae-requests-table {
+    margin-top: 15px;
+}
+
+.bae-interests-table th,
+.bae-requests-table th {
+    padding: 12px;
+    font-weight: 600;
+}
+
+.bae-interests-table td,
+.bae-requests-table td {
+    padding: 12px;
+    vertical-align: middle;
+}
+
+.bae-interests-table .column-name {
+    font-weight: 500;
+}
+
+.bae-interests-table .column-count a {
+    color: #0073aa;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.bae-interests-table .column-count a:hover {
+    color: #005a87;
+    text-decoration: underline;
+}
+
+.bae-interests-table .column-actions a,
+.bae-requests-table .column-actions a {
+    color: #b32d2e;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.bae-interests-table .column-actions a:hover,
+.bae-requests-table .column-actions a:hover {
+    color: #d63384;
+}
+
+/* Request Actions */
+.bae-approve-request {
+    color: #00a32a !important;
+}
+
+.bae-approve-request:hover {
+    color: #008a20 !important;
+}
+
+.bae-reject-request {
+    color: #d63384 !important;
+}
+
+.bae-reject-request:hover {
+    color: #b02a37 !important;
+}
+
+/* Request Modal */
+#bae-request-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bae-request-modal-content {
+    background: #fff;
+    max-width: 500px;
+    width: 90%;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.bae-request-modal-content h3 {
+    margin: 0;
+    padding: 20px 20px 15px;
+    color: #1d2327;
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
+}
+
+.bae-request-modal-body {
+    padding: 20px;
+}
+
+.bae-request-modal-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.bae-request-modal-field textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #8c8f94;
+    border-radius: 3px;
+    resize: vertical;
+}
+
+.bae-request-modal-field .description {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #646970;
+}
+
+.bae-request-modal-footer {
+    padding: 15px 20px;
+    background: #f6f7f7;
+    border-top: 1px solid #ddd;
+    border-radius: 0 0 4px 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bae-request-modal-footer .bae-spinner {
+    margin-left: auto;
+}
+
+/* Settings Page */
+.bae-admin-content .form-table th {
+    width: 250px;
+    padding: 20px 10px 20px 0;
+}
+
+.bae-admin-content .form-table td {
+    padding: 20px 10px;
+}
+
+.bae-admin-content .form-table input[type="number"] {
+    width: 80px;
+}
+
+.bae-admin-content .form-table .description {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #646970;
+}
+
+.bae-admin-content fieldset legend {
+    font-weight: 600;
+}
+
+.bae-admin-content fieldset label {
+    margin-top: 8px;
+    display: block;
+}
+
+/* Spinner */
+.bae-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #0073aa;
+    border-radius: 50%;
+    animation: bae-admin-spin 1s linear infinite;
+}
+
+@keyframes bae-admin-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 782px) {
+    .bae-admin-filters {
+        flex-direction: column;
+    }
+    
+    .bae-admin-filters input[type="text"] {
+        width: 100%;
+    }
+    
+    .bae-request-modal-content {
+        width: 95%;
+        margin: 20px;
+    }
+    
+    .bae-request-modal-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .bae-request-modal-footer .bae-spinner {
+        margin: 10px auto 0;
+    }
+}

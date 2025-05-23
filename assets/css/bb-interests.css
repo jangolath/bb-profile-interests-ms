@@ -1,0 +1,405 @@
+/*
+ * BAE Profile Interests - Frontend Styles
+ * File: assets/css/bb-interests.css
+ */
+
+/* General Interests Styling */
+.bae-interests-profile {
+    margin: 20px 0;
+}
+
+.bae-interests-category {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.bae-interests-category h3 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 2px solid #e1e5e9;
+    padding-bottom: 10px;
+}
+
+.bae-interests-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.bae-interest-item {
+    display: inline-block;
+    position: relative;
+}
+
+.bae-interest-link {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #f8f9fa;
+    color: #495057;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 1px solid #dee2e6;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.bae-interest-link:hover {
+    background: #007cba;
+    color: #fff;
+    border-color: #007cba;
+    text-decoration: none;
+}
+
+.bae-interest-count {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-left: 5px;
+}
+
+/* Manage Interests Styles */
+.bae-interests-manage {
+    max-width: 1200px;
+}
+
+.bae-interests-manage-info {
+    background: #e7f3ff;
+    border: 1px solid #72aee6;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+    color: #0073aa;
+}
+
+.bae-interests-categories-tabs {
+    margin-bottom: 30px;
+}
+
+.bae-interests-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-bottom: 1px solid #ddd;
+    background: #f9f9f9;
+    border-radius: 4px 4px 0 0;
+}
+
+.bae-interests-tabs li {
+    margin: 0;
+}
+
+.bae-interests-tabs a {
+    display: block;
+    padding: 12px 20px;
+    color: #666;
+    text-decoration: none;
+    border-right: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.bae-interests-tabs a:hover,
+.bae-interests-tabs a.active {
+    background: #007cba;
+    color: #fff;
+}
+
+.bae-interests-tabs li:last-child a {
+    border-right: none;
+}
+
+.bae-interests-tabs-content {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    min-height: 400px;
+}
+
+.bae-interests-tab-pane {
+    display: none;
+    padding: 20px;
+}
+
+.bae-interests-tab-pane.active {
+    display: block;
+}
+
+.bae-interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.bae-interest-manage-item {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.bae-interest-manage-item.selected {
+    background: #e7f3ff;
+    border-color: #007cba;
+}
+
+.bae-interest-name {
+    margin-bottom: 10px;
+}
+
+.bae-interest-name label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.bae-interest-name input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.bae-interest-search-option {
+    margin-left: 20px;
+}
+
+.bae-interest-search-option label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 12px;
+    color: #666;
+}
+
+.bae-interest-search-option input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.bae-load-more-interests {
+    text-align: center;
+    padding: 20px;
+}
+
+.bae-load-more-button {
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+/* Request Form Styles */
+.bae-interests-request-link {
+    text-align: center;
+    margin: 30px 0;
+    padding: 20px;
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.bae-request-interest-form {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.bae-request-interest-form h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.bae-form-field {
+    margin-bottom: 20px;
+}
+
+.bae-form-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+.bae-form-field .required {
+    color: #d63384;
+}
+
+.bae-form-field input[type="text"],
+.bae-form-field select,
+.bae-form-field textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.bae-form-field textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.bae-form-field .description {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+.bae-form-submit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bae-form-message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.bae-form-message.success {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.bae-form-message.error {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+/* Actions */
+.bae-interests-actions {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.bae-manage-interests-button {
+    padding: 12px 24px;
+    font-size: 16px;
+}
+
+/* Widget Styles */
+.widget_bae_interests .bae-interests-widget-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.widget_bae_interests .bae-interest-widget-item {
+    margin-bottom: 8px;
+    padding: 0;
+}
+
+.widget_bae_interests .bae-interest-link {
+    display: block;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    text-decoration: none;
+}
+
+.widget_bae_interests .bae-interest-link:hover {
+    color: #007cba;
+}
+
+/* Shortcode List Styles */
+.bae-interests-list.bae-interests-columns-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.bae-interests-list.bae-interests-columns-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.bae-interests-list.bae-interests-columns-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+/* Spinner */
+.bae-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #007cba;
+    border-radius: 50%;
+    animation: bae-spin 1s linear infinite;
+}
+
+@keyframes bae-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .bae-interests-tabs {
+        flex-direction: column;
+    }
+    
+    .bae-interests-tabs a {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .bae-interests-tabs li:last-child a {
+        border-bottom: none;
+    }
+    
+    .bae-interests-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .bae-interests-list.bae-interests-columns-2,
+    .bae-interests-list.bae-interests-columns-3,
+    .bae-interests-list.bae-interests-columns-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    .bae-form-submit {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* BuddyBoss Integration */
+.bp-single-vert .bae-interests-profile,
+.bp-single-vert .bae-interests-manage {
+    background: transparent;
+}
+
+.bp-single-vert .bae-interests-category {
+    background: var(--bb-background-color, #fff);
+    border: 1px solid var(--bb-border-color, #ddd);
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .bae-interests-category {
+        background: #2c3e50;
+        color: #ecf0f1;
+    }
+    
+    .bae-interest-link {
+        background: #34495e;
+        color: #ecf0f1;
+        border-color: #4a5f7a;
+    }
+    
+    .bae-interest-link:hover {
+        background: #3498db;
+        border-color: #3498db;
+    }
+}

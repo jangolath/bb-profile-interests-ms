@@ -370,13 +370,13 @@ class BAEI_DB {
      */
     public function ajax_submit_interest_request() {
         // Verify nonce
-        if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'bb_interests_nonce')) {
-            wp_send_json_error(array('message' => __('Security check failed.', 'bb-interests')));
+        if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'bae_interests_nonce')) {
+            wp_send_json_error(array('message' => __('Security check failed.', 'bae-interests')));
         }
 
         // Check if user is logged in
         if (!is_user_logged_in()) {
-            wp_send_json_error(array('message' => __('You must be logged in to submit interests.', 'bb-interests')));
+            wp_send_json_error(array('message' => __('You must be logged in to submit interests.', 'bae-interests')));
         }
 
         // Get current user ID
@@ -384,7 +384,7 @@ class BAEI_DB {
 
         // Validate required fields
         if (empty($_POST['interest_name']) || empty($_POST['category_id'])) {
-            wp_send_json_error(array('message' => __('Please fill in all required fields.', 'bb-interests')));
+            wp_send_json_error(array('message' => __('Please fill in all required fields.', 'bae-interests')));
         }
 
         // Sanitize input
@@ -400,11 +400,11 @@ class BAEI_DB {
             $this->notify_admin_of_new_request($request_id, $interest_name, $user_id);
 
             wp_send_json_success(array(
-                'message' => __('Your interest has been submitted for approval. Thank you!', 'bb-interests'),
+                'message' => __('Your interest has been submitted for approval. Thank you!', 'bae-interests'),
                 'request_id' => $request_id
             ));
         } else {
-            wp_send_json_error(array('message' => __('Error submitting your interest. Please try again.', 'bb-interests')));
+            wp_send_json_error(array('message' => __('Error submitting your interest. Please try again.', 'bae-interests')));
         }
 
         wp_die();
@@ -418,16 +418,16 @@ class BAEI_DB {
         $admin_email = get_option('admin_email');
         $site_name = get_bloginfo('name');
         
-        $subject = sprintf(__('[%s] New Interest Request: %s', 'bb-interests'), $site_name, $interest_name);
+        $subject = sprintf(__('[%s] New Interest Request: %s', 'bae-interests'), $site_name, $interest_name);
         
         $message = sprintf(
-            __('User %s has submitted a new interest request: %s. Review it in your admin dashboard.', 'bb-interests'),
+            __('User %s has submitted a new interest request: %s. Review it in your admin dashboard.', 'bae-interests'),
             $user->display_name . ' (' . $user->user_email . ')',
             $interest_name
         );
         
-        $admin_url = admin_url('admin.php?page=bb-interests-requests');
-        $message .= "\n\n" . sprintf(__('Approve or reject this request: %s', 'bb-interests'), $admin_url);
+        $admin_url = admin_url('admin.php?page=bae-interests-requests');
+        $message .= "\n\n" . sprintf(__('Approve or reject this request: %s', 'bae-interests'), $admin_url);
         
         wp_mail($admin_email, $subject, $message);
     }
@@ -437,13 +437,13 @@ class BAEI_DB {
      */
     public function ajax_add_interest_to_profile() {
         // Verify nonce
-        if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'bb_interests_nonce')) {
-            wp_send_json_error(array('message' => __('Security check failed.', 'bb-interests')));
+        if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'bae_interests_nonce')) {
+            wp_send_json_error(array('message' => __('Security check failed.', 'bae-interests')));
         }
 
         // Check if user is logged in
         if (!is_user_logged_in()) {
-            wp_send_json_error(array('message' => __('You must be logged in to add interests.', 'bb-interests')));
+            wp_send_json_error(array('message' => __('You must be logged in to add interests.', 'bae-interests')));
         }
 
         // Get current user ID
@@ -451,7 +451,7 @@ class BAEI_DB {
 
         // Validate required fields
         if (empty($_POST['interest_id'])) {
-            wp_send_json_error(array('message' => __('Interest ID is required.', 'bb-interests')));
+            wp_send_json_error(array('message' => __('Interest ID is required.', 'bae-interests')));
         }
 
         // Sanitize input
@@ -463,11 +463,11 @@ class BAEI_DB {
 
         if ($result) {
             wp_send_json_success(array(
-                'message' => __('Interest added to your profile successfully.', 'bb-interests'),
+                'message' => __('Interest added to your profile successfully.', 'bae-interests'),
                 'user_interest_id' => $result
             ));
         } else {
-            wp_send_json_error(array('message' => __('Error adding interest to your profile. Please try again.', 'bb-interests')));
+            wp_send_json_error(array('message' => __('Error adding interest to your profile. Please try again.', 'bae-interests')));
         }
 
         wp_die();
@@ -478,13 +478,13 @@ class BAEI_DB {
      */
     public function ajax_remove_interest_from_profile() {
         // Verify nonce
-        if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'bb_interests_nonce')) {
-            wp_send_json_error(array('message' => __('Security check failed.', 'bb-interests')));
+        if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'bae_interests_nonce')) {
+            wp_send_json_error(array('message' => __('Security check failed.', 'bae-interests')));
         }
 
         // Check if user is logged in
         if (!is_user_logged_in()) {
-            wp_send_json_error(array('message' => __('You must be logged in to remove interests.', 'bb-interests')));
+            wp_send_json_error(array('message' => __('You must be logged in to remove interests.', 'bae-interests')));
         }
 
         // Get current user ID
@@ -492,7 +492,7 @@ class BAEI_DB {
 
         // Validate required fields
         if (empty($_POST['interest_id'])) {
-            wp_send_json_error(array('message' => __('Interest ID is required.', 'bb-interests')));
+            wp_send_json_error(array('message' => __('Interest ID is required.', 'bae-interests')));
         }
 
         // Sanitize input
@@ -503,10 +503,10 @@ class BAEI_DB {
 
         if ($result) {
             wp_send_json_success(array(
-                'message' => __('Interest removed from your profile successfully.', 'bb-interests')
+                'message' => __('Interest removed from your profile successfully.', 'bae-interests')
             ));
         } else {
-            wp_send_json_error(array('message' => __('Error removing interest from your profile. Please try again.', 'bb-interests')));
+            wp_send_json_error(array('message' => __('Error removing interest from your profile. Please try again.', 'bae-interests')));
         }
 
         wp_die();
